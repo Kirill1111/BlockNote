@@ -1,0 +1,36 @@
+﻿<Window x:Class="Mes.WindowList.GlobalOptions"
+        StateChanged="Window_StateChanged"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Mes"
+        xmlns:classes="clr-namespace:Mes.Classes"
+        xmlns:brush="clr-namespace:Mes.Classes.Brush"
+        mc:Ignorable="d"
+        Style="{StaticResource ResourceKey=VS2012WindowStyle}"
+        Title="GlobalOptions"  MinWidth="800" MinHeight="600" HorizontalAlignment="Center" VerticalAlignment="Center" WindowStyle="None" Foreground="White" BorderBrush="White">
+<Window.Resources>
+            <brush:MainBrush x:Key="DataSource" />
+        <brush:BackBrush x:Key="GradientSource" />
+    </Window.Resources>
+    <Grid Background="{Binding _MyBrush,Source={StaticResource GradientSource}}"  Height="Auto" Width="Auto" Name="grid">
+
+        <ComboBox ToolTip="{DynamicResource Title26}"  FontSize="16" Name="Combo1" HorizontalAlignment="Center" Margin="563,20,50,0" VerticalAlignment="Top" Width="147" >
+            <TextBlock MouseLeftButtonDown="But2_MouseLeftButtonDown" Name ="But2" Text="{DynamicResource Title2}"  Width="140" Height="20"/>
+            <TextBlock MouseLeftButtonDown="But3_MouseLeftButtonDown" Name ="But3" Text="{DynamicResource Title4}" Width="140" Height="20" />
+        </ComboBox>
+
+        <Label Foreground="{Binding _Brush,Source={StaticResource DataSource}}" Name="Label1" FontSize="18" Content="{DynamicResource Title1}" HorizontalAlignment="Left" Margin="50,20,0,0" VerticalAlignment="Top" />
+
+
+        <Menu Height="25" VerticalAlignment="Top" Grid.ColumnSpan="2" FontSize="16" Name="menu1" Margin="0,0,0,0">
+            <Menu.Background >
+                <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1"
+                                     GradientStops="{Binding _MyBrush,Source={StaticResource DataSource}}">
+                </LinearGradientBrush>
+            </Menu.Background>
+        </Menu>
+        <Button Click="But_Click" Content="OK" HorizontalAlignment="Right" Margin="0,0,50,20" VerticalAlignment="Bottom" Width="100"  FontSize="18" Name="But"/>
+    </Grid>
+</Window>

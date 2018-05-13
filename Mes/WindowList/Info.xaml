@@ -1,0 +1,24 @@
+﻿<Window x:Class="Mes.WindowList.Info"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Mes"
+        xmlns:classes="clr-namespace:Mes.Classes"
+        xmlns:brush="clr-namespace:Mes.Classes.Brush"
+        Style="{StaticResource ResourceKey=VS2012WindowStyle}"
+        mc:Ignorable="d"
+        Title="Info"  MinHeight="600" MinWidth="800" WindowStyle="None">
+    <Window.Resources>
+            <brush:MainBrush x:Key="DataSource" />
+            <brush:BackBrush x:Key="GradientSource" />
+    </Window.Resources>
+    <Grid Background="{Binding _MyBrush,Source={StaticResource GradientSource}}"  Name="grid">
+
+        <Label Foreground="{Binding _Brush,Source={StaticResource DataSource}}"   Content="{DynamicResource Title11}" HorizontalAlignment="Stretch" Margin="0,0,0,465" VerticalAlignment="Stretch" FontSize="18" Name="lb" />
+        <Button Click="But_Click" Content="OK" HorizontalAlignment="Right" Margin="0,0,10,29" VerticalAlignment="Bottom"  FontSize="16" Name="But" Width="115"  />
+
+
+    </Grid>
+
+</Window>

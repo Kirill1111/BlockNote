@@ -1,0 +1,22 @@
+﻿<Window x:Class="Mes.WindowList.Crypto"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Mes.WindowList"
+        mc:Ignorable="d"
+        Title="Crypto" Height="200" Width="600">
+    <Grid>
+        <Label HorizontalAlignment="Left" Margin="23,0,0,0" VerticalAlignment="Top">
+            <Label Content="{DynamicResource Title49}" Width="549"/>
+        </Label>
+        <TextBox Name="Key1" HorizontalAlignment="Left" Height="23" Margin="6,37,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="475"/>
+        <Button Content="{DynamicResource Title50}" HorizontalAlignment="Left" Margin="481,36,0,0" VerticalAlignment="Top" Width="101" Height="24" Click="Button_Click"/>
+        <Label HorizontalAlignment="Left" Margin="23,65,0,0" VerticalAlignment="Top"/>
+        <TextBox Name="IV1" HorizontalAlignment="Left" Height="23" Margin="6,75,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="475"/>
+        <Button Content="{DynamicResource Title50}" HorizontalAlignment="Left" Margin="481,74,0,0" VerticalAlignment="Top" Width="101" Height="24" Click="Button_Click_1"/>
+        <Button Content="{DynamicResource Title51}" HorizontalAlignment="Left" Margin="61,113,0,0" VerticalAlignment="Top" Width="164" Height="37" Click="Button_Click_2"/>
+        <Button Content="{DynamicResource Title52}" HorizontalAlignment="Left" Margin="351,113,0,0" VerticalAlignment="Top" Width="164" Height="37" Click="Button_Click_3"/>
+
+    </Grid>
+</Window>
