@@ -44,14 +44,8 @@
             <MenuItem  Foreground="{Binding _Brush,Source={StaticResource DataSource}}" Name="Help" Click="Help_OnClick"  Header="{DynamicResource Title55}" />
         </Menu>
 
-        <RichTextBox VerticalScrollBarVisibility="Auto" Background="#EFEFF2" IsReadOnly="True" AcceptsReturn="True" KeyDown="TxtBox_OnKeyDown" Name="TxtBox"    HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="300,75,0,0">
-            <RichTextBox.ContextMenu>
-                <ContextMenu>
-                    <MenuItem Command="Cut" />
-                    <MenuItem Command="Copy"/>
-                    <MenuItem Command="Paste"/>
-                </ContextMenu>
-            </RichTextBox.ContextMenu>
+        <RichTextBox SpellCheck.IsEnabled="True"  VerticalScrollBarVisibility="Auto" Background="#EFEFF2" IsReadOnly="True" AcceptsReturn="True" KeyDown="TxtBox_OnKeyDown" Name="TxtBox"    HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="300,75,0,0">
+
             <FlowDocument LineHeight="1">
                 <Paragraph>
                     <Run Text=""/>

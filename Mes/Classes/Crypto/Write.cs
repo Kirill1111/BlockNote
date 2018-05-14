@@ -21,7 +21,7 @@ namespace Mes.Classes.Crypto
             }
             catch (Exception e)
             {
-                MessageBox.Show($@"Ошибка декодирования");
+                MessageBox.Show("Ошибка декодирования");
                 Logs.Log("Eror Decode", "FatalErr", e, System.Reflection.MethodBase.GetCurrentMethod().Name);
                 return null;
             }

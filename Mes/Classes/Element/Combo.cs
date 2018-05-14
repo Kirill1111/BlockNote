@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,9 +12,7 @@ namespace Mes.Classes.Element
     {
         // Храним информацию о списке размеров для текста
 
-        private static string[] text;
-
-        public static string[] TextCombo => text;
+        public static string[] TextCombo { get; private set; }
 
         //Инициализация
         public static bool Init(int Lenght)
@@ -21,13 +20,13 @@ namespace Mes.Classes.Element
             try
             {
                 //Создаём массив 
-                text = new string[Lenght];
-                text[0] = Convert.ToString("null");
+                TextCombo = new string[Lenght];
+                TextCombo[0] = Convert.ToString("null");
 
                 //Заполняем массив
-                for (int i = 1; i < text.Length; i++)
+                for (var i = 1; i < TextCombo.Length; i++)
                 {
-                    text[i] = Convert.ToString((8 + 2 * i) * 1.25);
+                    TextCombo[i] =Convert.ToString((8 + 3 * i));
                 }
 
                 return true;

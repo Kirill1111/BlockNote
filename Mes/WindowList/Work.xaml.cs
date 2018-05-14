@@ -38,7 +38,7 @@ namespace Mes.WindowList
 
     public partial class Work : Window
     {
-        public static string[] CollectionsText;
+        private Stream File1;
 
         //Сохраняем информациюя
         ~Work()
@@ -49,6 +49,8 @@ namespace Mes.WindowList
 
         public Work()
         {
+            reestablish test = new reestablish();
+            test = null;
             Mes.Classes.Instruments.Save.FileNameOpen();
             GlobalOptions.UpdateState();
             DataContext = Classes.Brush.BackBrush._MyBrush;
@@ -65,8 +67,12 @@ namespace Mes.WindowList
         private void MenuItem_Click(object sender, RoutedEventArgs e)
         {
             // Открытие окна с настройками
-            var global = new GlobalOptions(Top, Left, Height, Width, WindowState);
+            GlobalOptions global = new GlobalOptions(Top, Left, Height, Width, WindowState);
             global.ShowDialog();
+            Work wrk = new Work();
+            Close();
+            wrk.Show();
+            DataContext = Mes.Classes.Brush.BackBrush._MyBrush;
             Logs.Log("Menu click work", "Info", System.Reflection.MethodBase.GetCurrentMethod().Name);
         }
 
@@ -188,8 +194,6 @@ namespace Mes.WindowList
             if (a.SelectedIndex != 0)
                 TxtBox.Selection.ApplyPropertyValue(RichTextBox.FontSizeProperty, a.SelectedValue);
             a.SelectedIndex = 0;
-
-            a.FontSize = 12;
         }
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
@@ -221,12 +225,10 @@ namespace Mes.WindowList
             //Изменение шрифта выделенного текста
             if (sender is ComboBox a && a.SelectedIndex != 0)
                 TxtBox.Selection.ApplyPropertyValue(FontFamilyProperty,
-                    new System.Windows.Media.FontFamily((String) a.SelectedValue));
+                    new System.Windows.Media.FontFamily((string) a.SelectedValue));
             else return;
 
             a.SelectedIndex = 0;
-
-            a.FontFamily = new System.Windows.Media.FontFamily("Arial");
         }
 
         private void MenuItem_OnClick(object sender, RoutedEventArgs e)
@@ -256,36 +258,29 @@ namespace Mes.WindowList
 
         private void ListL_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            // Открытие файла 
-            try
-            {
-                // Очистка
                 TxtBox.Document.Blocks.Clear();
                 TxtBox.IsReadOnly = true;
                 string path = "SaveInfo/SaveText/" + Classes.Element.List.Selection.SelectionElemtnt + ".SAVE";
-                Stream file = new FileStream(path, FileMode.Open);
-                TextRange range = new TextRange(TxtBox.Document.ContentStart, TxtBox.Document.ContentEnd);
 
+            if (File.Exists(path)) File1 = new FileStream(path, FileMode.Open);
+            else return;
+
+            TextRange range = new TextRange(TxtBox.Document.ContentStart, TxtBox.Document.ContentEnd);
                 try
                 {
                     // Чтение файла формата Rtf
-                    range.Load(file, System.Windows.DataFormats.Rtf);
+                    range.Load(File1, System.Windows.DataFormats.Rtf);
                 }
                 catch (Exception)
                 {
-                    file.Close();
+                    File1.Close();
                     // Чтение файла другово формата                
                     range.Text = File.ReadAllText(path, Encoding.Unicode);
                 }
                 finally
                 {
-                    file.Close();
+                    File1?.Close();
                 }
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("Ошибка открытия файла");
-            }
         }
     }
 }

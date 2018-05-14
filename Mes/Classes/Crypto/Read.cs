@@ -30,33 +30,24 @@ namespace Mes.Classes.Crypto
         private static string Crypt(string path, string Key, string IV)
         {
             //Создание потока для чтения файла
-            var stream = new FileStream(path,
-                FileMode.Open, FileAccess.Read);
-
-            //Создание объекта для кодирования файла
-            var cryptic = new RijndaelManaged
-            {
-                Key = ASCIIEncoding.ASCII.GetBytes(Key),
-                IV = ASCIIEncoding.ASCII.GetBytes(IV)
-            };
-
-            //Создание потока для записи закодираванной информации
-            var crStream = new CryptoStream(stream,
-                cryptic.CreateDecryptor(), CryptoStreamMode.Read);
-
-            //Создание объета для чтения
-            var reader = new StreamReader(crStream, Encoding.Unicode);
-
-             var data = reader.ReadToEnd();
-
-            //Закрытие потоков
-            reader.Close();
-            stream.Close();
-
-            //Запись в файл декодированного текста
-            File.WriteAllText(path,data);
-
-            return data;
+                var stream = new FileStream(path,FileMode.Open, FileAccess.Read);
+                //Создание объекта для кодирования файла
+                var cryptic = new RijndaelManaged
+                {
+                    Key = ASCIIEncoding.ASCII.GetBytes(Key),
+                    IV = ASCIIEncoding.ASCII.GetBytes(IV)
+                };
+                //Создание потока для записи закодираванной информации
+                var crStream = new CryptoStream(stream,cryptic.CreateDecryptor(), CryptoStreamMode.Read);
+                //Создание объета для чтения
+                var reader = new StreamReader(crStream, Encoding.Unicode);
+                var data = reader.ReadToEnd();
+                //Закрытие потоков
+                reader.Close();
+                stream.Close();
+                //Запись в файл декодированного текста
+                File.WriteAllText(path, data);
+                return data;
         }
     }
 }
