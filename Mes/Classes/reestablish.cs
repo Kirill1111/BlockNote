@@ -12,9 +12,14 @@ namespace Mes.Classes
     {
         public reestablish()
         {
+            if (!Directory.Exists("SaveInfo"))
+                Directory.CreateDirectory("SaveInfo");
+            if(!Directory.Exists("SaveInfo/SaveText"))
+                Directory.CreateDirectory("SaveInfo/SaveText");
+
             Test("SaveInfo/Work.SAVE","|");
             Test("SaveInfo/Logs.SAVE", "");
-            Test("SaveInfo/Save.SAVE", "");
+            Test("SaveInfo/Save.SAVE", "|");
             Test("SaveInfo/SaveD.SAVE", "1");
         }
 
@@ -22,8 +27,7 @@ namespace Mes.Classes
         {
             if (!File.Exists(path))
             {
-                StreamWriter file = new StreamWriter(path);
-                file.Write(write);
+                File.WriteAllText(path,write);
             }
         }
     }
