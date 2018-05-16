@@ -26,7 +26,6 @@ namespace Mes.Classes.FileSystem
             { 
                 if (value == null ) return;
 
-                    _darkContent = new string[value.Length];
                     _darkContent = value;
             }
         }

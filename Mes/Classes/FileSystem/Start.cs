@@ -15,9 +15,6 @@ namespace Mes.Classes.FileSystem
 {
     public class Start
     {
-        private static string[] Content;
-        private static int Len = 0;
-
         public static string[] Load(string path)
         {
             try
@@ -25,30 +22,12 @@ namespace Mes.Classes.FileSystem
                 if(path == null)return null;
 
                 //Считываем файл и сохраняем результаты
-                string file = File.ReadAllText(path, Encoding.Unicode);
-                //Создаём массив с размером = file
-                Content = new string[file.Length];
+                string file = new StreamReader(path, Encoding.Unicode).ReadLine();
 
-                //Записивыем в строку символы пока не найдём | после чего переходем на следующею строку
-                for (var i = 0; i < file.Length; i++)
-                {
-                    if (file[i] != '|')
-                    {
-                        Content[Len] += file[i];
-                    }
-                    else
-                    {
-                        Len++;
-                    }
-                }
-
-                //Очищаем массив от нулевых значений
-                Content = Content.Where(x => x != null).ToArray();
-                
-                Len = 0;
-                return Content;
+                //Записивыем в строку символы пока не найдём | после чего переходем на следующею строку       
+                return file!=null ? file.Substring(0,file.Length-1).Split('|') : null;
+            
             }
-
             catch (IOException e)
             {
                 Logs.Log("Error Load Data", "FatalErr", e, System.Reflection.MethodBase.GetCurrentMethod().Name);

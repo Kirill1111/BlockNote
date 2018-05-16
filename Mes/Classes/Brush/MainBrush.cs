@@ -17,7 +17,6 @@ namespace Mes.Classes.Brush
            {
             get { return myBrush; }
             set { myBrush = value; }
-
            }   
 
     }

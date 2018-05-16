@@ -26,18 +26,15 @@ namespace Mes.Classes.Element
             //Получаем список шрифтоф
             System.Drawing.Text.InstalledFontCollection fonts = new System.Drawing.Text.InstalledFontCollection();
             //Создайм новый массив размер = количеству шрифтоф
-            string[] Str = new string[fonts.Families.Length];
+            string[] Str = new string[fonts.Families.Length + 1];
 
             Str[0] = "null";
 
             //Заполняем Str шрифтами из fonts
             foreach (FontFamily font in fonts.Families)
             {
-                if (i < fonts.Families.Length)
-                {
-                    Str[i] = font.Name;
-                    i++;
-                }
+                Str[i]= font.Name;
+                i++;
             }
             
             // Сохраняем информацию о шрифтах
