@@ -7,11 +7,11 @@ using System.Windows;
 // Общие сведения об этой сборке предоставляются следующим набором
 // набора атрибутов. Измените значения этих атрибутов, чтобы изменить сведения,
 // связанные со сборкой.
-[assembly: AssemblyTitle("messenger")]
+[assembly: AssemblyTitle("BlockNote")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("CtrlSoft")]
-[assembly: AssemblyProduct("messenger")]
+[assembly: AssemblyProduct("BlockNote")]
 [assembly: AssemblyCopyright("Copyright © CtrlSoft 2018")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
