@@ -20,7 +20,7 @@ namespace Mes.Classes
             Test("SaveInfo/Work.SAVE","|");
             Test("SaveInfo/Logs.SAVE", "");
             Test("SaveInfo/Save.SAVE", "|");
-            Test("SaveInfo/SaveD.SAVE", "1");
+            Test("SaveInfo/SaveD.SAVE", "0");
         }
 
         private void Test(string path,string write)
