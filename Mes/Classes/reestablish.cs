@@ -19,7 +19,7 @@ namespace Mes.Classes
 
             Test("SaveInfo/Work.SAVE","");
             Test("SaveInfo/Logs.SAVE", "");
-            Test("SaveInfo/Save.SAVE", "");
+            Test("SaveInfo/Save.SAVE", "|");
             Test("SaveInfo/SaveD.SAVE", "0");
         }
 

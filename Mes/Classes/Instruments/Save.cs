@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.ServiceModel.PeerResolvers;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Documents;
@@ -32,7 +33,9 @@ namespace Mes.Classes.Instruments
         //Читает информацию
         public static void FileNameOpen()
         {
-            FileName = Mes.Classes.FileSystem.Start.Load("SaveInfo/Save.SAVE");
+            var result = Mes.Classes.FileSystem.Start.Load("SaveInfo/Save.SAVE");
+            if (result != null)
+                FileName = result;
         }
 
         //Добавляем имя в список
@@ -61,7 +64,9 @@ namespace Mes.Classes.Instruments
         //Выполняем поиск по массиву
         public static bool Search(string a)
         {
+            if(FileName != null)
             return FileName.Any(t => a == t);
+            return false;
         }
 
         //Сохранение информации
