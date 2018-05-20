@@ -15,7 +15,9 @@ using System.Windows.Forms;
 using System.Windows.Controls;
 using System.Windows.Xps;
 using System.Windows.Xps.Packaging;
+using Mes.Classes.Element.List;
 using Mes.Classes.FileSystem;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using static System.IO.File;
 using Color = System.Windows.Media.Color;
 using ComboBox = System.Windows.Controls.ComboBox;
@@ -135,18 +137,22 @@ namespace Mes.WindowList
         private void ButDelete_OnClick(object sender, RoutedEventArgs e)
         {
             //Удаление файла
-            try
+            DialogResult dialogResult = System.Windows.Forms.MessageBox.Show((string)System.Windows.Application.Current.Resources["Title56"], (string)System.Windows.Application.Current.Resources["Title35"], MessageBoxButtons.YesNo);
+            if (dialogResult == System.Windows.Forms.DialogResult.Yes)
             {
-                Instruments.Delete = Classes.Element.List.Selection.SelectionElemtnt;
-                ListL.ItemsSource = Classes.FileSystem.Instruments.Output;
-                Delete("SaveInfo/SaveText/" + Classes.Element.List.Selection.SelectionElemtnt + ".SAVE");
-                Classes.Element.List.Selection.SelectionElemtnt = null;
-                TxtBox.Document.Blocks.Clear();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Выберите файл для удаления");
-                Logs.Log("Error delete File", "FatalErr", ex, System.Reflection.MethodBase.GetCurrentMethod().Name);
+                try
+                {
+                    Instruments.Delete = Classes.Element.List.Selection.SelectionElemtnt;
+                    ListL.ItemsSource = Classes.FileSystem.Instruments.Output;
+                    Delete("SaveInfo/SaveText/" + Classes.Element.List.Selection.SelectionElemtnt + ".SAVE");
+                    Classes.Element.List.Selection.SelectionElemtnt = null;
+                    TxtBox.Document.Blocks.Clear();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Выберите файл для удаления");
+                    Logs.Log("Error delete File", "FatalErr", ex, System.Reflection.MethodBase.GetCurrentMethod().Name);
+                }
             }
         }
 
@@ -234,8 +240,11 @@ namespace Mes.WindowList
         private void MenuItem_OnClick(object sender, RoutedEventArgs e)
         {
             var crypt = new Crypto(Classes.Element.List.Selection.SelectionElemtnt,TxtBox);
-            if(crypt.ShowDialog() == false)
-            ListL_OnSelectionChanged(null,null);
+            if (crypt.ShowDialog() == false)
+            {
+                 Classes.Element.ListView.Select(TxtBox, "SaveInfo/SaveText/" + Selection.SelectionElemtnt + ".SAVE");
+                ListL_OnSelectionChanged(null, null);
+            }
         }
 
         private void Button_MouseEnter(object sender, System.Windows.Input.MouseEventArgs e)
@@ -256,31 +265,12 @@ namespace Mes.WindowList
             help.ShowDialog();
         }
 
+        bool Ignore = false;
+
         private void ListL_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-                TxtBox.Document.Blocks.Clear();
-                TxtBox.IsReadOnly = true;
-                string path = "SaveInfo/SaveText/" + Classes.Element.List.Selection.SelectionElemtnt + ".SAVE";
-
-            if (File.Exists(path)) File1 = new FileStream(path, FileMode.Open);
-            else return;
-
-            TextRange range = new TextRange(TxtBox.Document.ContentStart, TxtBox.Document.ContentEnd);
-                try
-                {
-                    // Чтение файла формата Rtf
-                    range.Load(File1, System.Windows.DataFormats.Rtf);
-                }
-                catch (Exception)
-                {
-                    File1.Close();
-                    // Чтение файла другово формата                
-                    range.Text = File.ReadAllText(path, Encoding.Unicode);
-                }
-                finally
-                {
-                    File1?.Close();
-                }
+            Mes.Classes.Element.ListView.Select(TxtBox,
+                "SaveInfo/SaveText/" + Classes.Element.List.Selection.SelectionElemtnt + ".SAVE");
         }
     }
 }

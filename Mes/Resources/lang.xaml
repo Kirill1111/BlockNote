@@ -58,5 +58,6 @@
     <v:String x:Key="Title53">Back</v:String>
     <v:String x:Key="Title54">Next</v:String>
     <v:String x:Key="Title55">Help</v:String>
+    <v:String x:Key="Title56">Are you sure you want to delete the file</v:String>
 
 </ResourceDictionary>

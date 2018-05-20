@@ -168,6 +168,7 @@
     <Compile Include="Classes\Dialog\SaveFileDialog.cs" />
     <Compile Include="Classes\Element\Combo.cs" />
     <Compile Include="Classes\Element\FontCombo.cs" />
+    <Compile Include="Classes\Element\ListView.cs" />
     <Compile Include="Classes\Element\List\Selection.cs" />
     <Compile Include="Classes\FileSystem\Instruments.cs" />
     <Compile Include="Classes\FileSystem\Save.cs" />

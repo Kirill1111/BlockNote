@@ -57,5 +57,6 @@
     <v:String x:Key="Title53">Назад</v:String>
     <v:String x:Key="Title54">Вперёд</v:String>
     <v:String x:Key="Title55">Помощь</v:String>
+    <v:String x:Key="Title56">Вы действительно хотите удалить файл?</v:String>
 
 </ResourceDictionary>
