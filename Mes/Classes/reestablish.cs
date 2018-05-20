@@ -17,9 +17,9 @@ namespace Mes.Classes
             if(!Directory.Exists("SaveInfo/SaveText"))
                 Directory.CreateDirectory("SaveInfo/SaveText");
 
-            Test("SaveInfo/Work.SAVE","|");
+            Test("SaveInfo/Work.SAVE","");
             Test("SaveInfo/Logs.SAVE", "");
-            Test("SaveInfo/Save.SAVE", "|");
+            Test("SaveInfo/Save.SAVE", "");
             Test("SaveInfo/SaveD.SAVE", "0");
         }
 

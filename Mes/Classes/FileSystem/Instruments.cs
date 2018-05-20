@@ -51,7 +51,7 @@ namespace Mes.Classes.FileSystem
             set
             {
                 if (value == null) return;
-                if (_darkContent == null) return;
+                if (_darkContent == null) _darkContent = new string[0];
 
                 if (_darkContent.Any(t => value == t))
                 {
