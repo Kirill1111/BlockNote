@@ -64,6 +64,7 @@ namespace Mes.WindowList
             ListL.ItemsSource = Classes.FileSystem.Instruments.Output;
             Classes.Element.Combo.Init(20);
             ComboB.ItemsSource = Classes.Element.Combo.TextCombo;
+            AppDomain.CurrentDomain.UnhandledException += CurrentDomain_UnhandledException;
         }
 
         private void MenuItem_Click(object sender, RoutedEventArgs e)
@@ -265,12 +266,32 @@ namespace Mes.WindowList
             help.ShowDialog();
         }
 
-        bool Ignore = false;
-
         private void ListL_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             Mes.Classes.Element.ListView.Select(TxtBox,
                 "SaveInfo/SaveText/" + Classes.Element.List.Selection.SelectionElemtnt + ".SAVE");
+        }
+
+        private void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e)
+        {
+            Exception Ex = (Exception)e.ExceptionObject;
+            MessageBox.Show("Произошла критическая ошибка");
+            Logs.Log("FatalErr", "StopProgram", Ex, System.Reflection.MethodBase.GetCurrentMethod().Name);
+        }
+
+        private void Button_Click_4(object sender, RoutedEventArgs e)
+        {
+            TxtBox.Selection.ApplyPropertyValue(Paragraph.TextAlignmentProperty,TextAlignment.Left);
+        }
+
+        private void Button_Click_5(object sender, RoutedEventArgs e)
+        {
+            TxtBox.Selection.ApplyPropertyValue(Paragraph.TextAlignmentProperty, TextAlignment.Center);
+        }
+
+        private void Button_Click_6(object sender, RoutedEventArgs e)
+        {
+            TxtBox.Selection.ApplyPropertyValue(Paragraph.TextAlignmentProperty, TextAlignment.Right);
         }
     }
 }

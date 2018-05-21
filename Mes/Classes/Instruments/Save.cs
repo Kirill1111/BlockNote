@@ -119,8 +119,5 @@ namespace Mes.Classes.Instruments
                 fileStream.Close();
             }
         }
-
-
-
     }
 }
