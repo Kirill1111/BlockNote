@@ -65,20 +65,34 @@ namespace Mes.WindowList
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
-            Key = Key1.Text;
-            Iv = IV1.Text;
-            Classes.Crypto.Write.WriteText(File.ReadAllText("SaveInfo/SaveText/" + txt + ".SAVE"),
-                 "SaveInfo/SaveText/" + txt + ".SAVE",Key, Iv);
-            Close();
+            if (Key1.Text.Length == 32 && IV1.Text.Length == 16)
+            {
+                Key = Key1.Text;
+                Iv = IV1.Text;
+                Classes.Crypto.Write.WriteText(File.ReadAllText("SaveInfo/SaveText/" + txt + ".SAVE"),
+                     "SaveInfo/SaveText/" + txt + ".SAVE", Key, Iv);
+                Close();
+            }
+            else
+            {
+                MessageBox.Show("Неверный ключ или вектор инициализации.");
+            }
         }
 
         private void Button_Click_3(object sender, RoutedEventArgs e)
         {
-            Iv = IV1.Text;
-            Key = Key1.Text;
-            Classes.Crypto.Read.ReadText("SaveInfo/SaveText/" + txt + ".SAVE", Key, Iv);
-            Close();
-        }
+            if (Key1.Text.Length == 32 && IV1.Text.Length == 16)
+            {
+                Iv = IV1.Text;
+                Key = Key1.Text;
+                Classes.Crypto.Read.ReadText("SaveInfo/SaveText/" + txt + ".SAVE", Key, Iv);
+                Close();
+            }
+            else
+            {
+                MessageBox.Show("Неверный ключ или вектор инициализации.");
+            }
+}
     }
 }
 
