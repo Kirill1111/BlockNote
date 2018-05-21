@@ -298,5 +298,11 @@
   <ItemGroup>
     <Resource Include="Resources\Image\Image3.png" />
   </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Resources\Image\TextPosition\Centr.png" />
+    <Resource Include="Resources\Image\TextPosition\Left.png" />
+    <Resource Include="Resources\Image\TextPosition\Right.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
