@@ -187,11 +187,14 @@ namespace Mes.WindowList
             //Изменение имени
             var name = new ReName();
             name.ShowDialog();
-            Move("SaveInfo/SaveText/" + Classes.Element.List.Selection.SelectionElemtnt + ".SAVE", "SaveInfo/SaveText/" + name.Name + ".SAVE");
-            Classes.Instruments.Save.FileNameAdd(name.Name);
-            Instruments.Rename(Classes.Element.List.Selection.SelectionElemtnt, name.Name);
+            if (Classes.FileSystem.Instruments.Search(Classes.Element.List.Selection.SelectionElemtnt))
+            {
+                Move("SaveInfo/SaveText/" + Classes.Element.List.Selection.SelectionElemtnt + ".SAVE", "SaveInfo/SaveText/" + name.Name + ".SAVE");
+                Classes.Instruments.Save.FileNameAdd(name.Name);
+                Instruments.Rename(Classes.Element.List.Selection.SelectionElemtnt, name.Name);
+                ListL.ItemsSource = Classes.FileSystem.Instruments.Output;
+            }
 
-            ListL.ItemsSource = Classes.FileSystem.Instruments.Output;
         }
 
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)

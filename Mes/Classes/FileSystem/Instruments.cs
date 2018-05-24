@@ -38,6 +38,7 @@ namespace Mes.Classes.FileSystem
             set
             {
                 int Num = Array.IndexOf(Output, value);
+                if (Num == -1) return;
                 Output[Num] = null;
                 Output.Where(x => x != null).ToArray();
             }

@@ -13,25 +13,21 @@ namespace Mes.Classes.Crypto
 {
     class Write
     {
-        public static string WriteText(string Text,string path, string Key, string IV)
+        public static void WriteText(string Text,string path, string Key, string IV)
         {
             try
             {
-                return UnCode(Text, path, Key, IV);
+                 UnCode(Text, path, Key, IV);
             }
             catch (Exception e)
             {
                 MessageBox.Show("Ошибка декодирования");
                 Logs.Log("Eror Decode", "FatalErr", e, System.Reflection.MethodBase.GetCurrentMethod().Name);
-                return null;
             }
         }
 
-        public static string UnCode(string Text, string path, string Key, string IV)
+        public static async void UnCode(string Text, string path, string Key, string IV)
         {    
-            //Создание потока для записи в файл
-                var stream = new FileStream(path, FileMode.OpenOrCreate, FileAccess.Write);
-
                 //Создание объекта для кодирования
                 var cryptic = new RijndaelManaged
                 {
@@ -39,21 +35,22 @@ namespace Mes.Classes.Crypto
                     IV = ASCIIEncoding.ASCII.GetBytes(IV)
                 };
 
-                //Создания потока для записи в файл закодираванного объетка
-                CryptoStream crStream = new CryptoStream(stream,
-                    cryptic.CreateEncryptor(), CryptoStreamMode.Write);
-
                 //Получения закодированного текста
                 var data = ASCIIEncoding.Unicode.GetBytes(Text);
 
-                //Запись в файл
-                crStream.Write(data, 0, data.Length);
+            using (var stream = new FileStream(path, FileMode.OpenOrCreate, FileAccess.Write))
+            {
+                using (CryptoStream crStream = new CryptoStream(stream, cryptic.CreateEncryptor(), CryptoStreamMode.Write))
+                {
+                    Task r = Task.Run(() =>
+                    {
+                    crStream.Write(data, 0, data.Length);
+                    }
+                    );
 
-                //Закрытие потоков
-                crStream.Close();
-                stream.Close();
-
-                return Convert.ToString(data);
+                    r.Wait();
+                }
+            }
         }
 
     }

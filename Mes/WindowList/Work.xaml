@@ -67,7 +67,7 @@
         <Button FontSize="11" MouseEnter="Button_MouseEnter" MouseLeave="Button_MouseLeave"  ToolTip="{DynamicResource Title43}" Content="{DynamicResource Title42}" HorizontalAlignment="Left" Margin="798,25,0,0" VerticalAlignment="Top"  Height="25" Click="Button_Click_3" Width="100" />
         <ComboBox SelectionChanged="Selector_OnSelectionChanged" ItemsSource="{Binding Font,Source={StaticResource ElementCombo}}" HorizontalAlignment="Left" Margin="450,50,0,0" VerticalAlignment="Top" Width="148" Height="25"/>
         <Button HorizontalAlignment="Left" Margin="598,50,0,0" VerticalAlignment="Top" Width="50" Height="25" Click="Button_Click_4">
-            <Image Stretch="Fill" Source="../Resources/Image/TextPosition/Left.png"/>
+            <Image Stretch="Fill" Source="../Resources/Image/TextPosition/Left.png" />
         </Button>
         <Button HorizontalAlignment="Left" Margin="648,50,0,0" VerticalAlignment="Top" Width="50" Height="25" Click="Button_Click_5">
             <Image Stretch="Fill" Source="../Resources/Image/TextPosition/Centr.png"/>
