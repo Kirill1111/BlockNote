@@ -34,7 +34,6 @@ namespace Mes.Classes.Instruments
         public static void FileNameOpen()
         {
             var result = Mes.Classes.FileSystem.Start.Load("SaveInfo/Save.SAVE");
-            if (result != null)
                 FileName = result;
         }
 

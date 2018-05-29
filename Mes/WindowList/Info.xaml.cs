@@ -15,7 +15,7 @@ namespace Mes.WindowList
             //Создание окна
             Logs.Log("Start loading Log Info", "Info", System.Reflection.MethodBase.GetCurrentMethod().Name);
 
-            DataContext = Mes.Classes.Brush.BackBrush._MyBrush;
+            DataContext = new Mes.Classes.Brush.BackBrush()._MyBrush;
 
             InitializeComponent();
 

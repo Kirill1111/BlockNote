@@ -3,23 +3,27 @@
  * цвете текста внутри элемента управления
  *===================================================
  */
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Media;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
 
 namespace Mes.Classes.Brush
 {
-    class BackBrush
+    class BackBrush : INotifyPropertyChanged
     {
         private static SolidColorBrush myBrush = new SolidColorBrush(Color.FromRgb(0xEF, 0xEF, 0xF2));
 
-        public static SolidColorBrush _MyBrush
+        public SolidColorBrush _MyBrush
         {
             get { return myBrush; }
             set { myBrush = value; }
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        public void OnPropertyChanged([CallerMemberName]string prop = "")
+        {
+            if (PropertyChanged != null)
+                PropertyChanged(this, new PropertyChangedEventArgs(prop));
         }
 
     }

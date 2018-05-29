@@ -25,7 +25,7 @@ namespace Mes.WindowList
         {
             InitializeComponent();
 
-            grid.DataContext = Mes.Classes.Brush.BackBrush._MyBrush;
+            grid.DataContext = new Mes.Classes.Brush.BackBrush()._MyBrush;
 
             Combo1.SelectedIndex = ComboBox1;
             Logs.Log("Stop loading Log GlobalOptions", "Info", System.Reflection.MethodBase.GetCurrentMethod().Name);
@@ -57,7 +57,7 @@ namespace Mes.WindowList
                 this.Width = Width;
             }
 
-            grid.DataContext = Mes.Classes.Brush.BackBrush._MyBrush;
+            grid.DataContext = new Mes.Classes.Brush.BackBrush()._MyBrush;
 
             Combo1.SelectedIndex = ComboBox1;
             Logs.Log("Stop loading Log GlobalOptions", "Info" , System.Reflection.MethodBase.GetCurrentMethod().Name);
@@ -79,11 +79,11 @@ namespace Mes.WindowList
 
         private void But2_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            //Чёрная темя
+            //Чёрная тема
             ComboBox1 = 0;
-           Mes.Classes.Brush.MainBrush._Brush = new SolidColorBrush(Color.FromRgb(48, 48, 48));
+           new Mes.Classes.Brush.MainBrush()._Brush = new SolidColorBrush(Color.FromRgb(48, 48, 48));
 
-            Mes.Classes.Brush.BackBrush._MyBrush = new SolidColorBrush(Color.FromRgb(0xEF , 0xEF , 0xF2));
+            new Mes.Classes.Brush.BackBrush()._MyBrush = new SolidColorBrush(Color.FromRgb(0xEF , 0xEF , 0xF2));
                 
             try
             {
@@ -114,12 +114,12 @@ namespace Mes.WindowList
             switch(ComboBox1)
             {
                 case 1:
-                    MainBrush._Brush = new SolidColorBrush(Color.FromRgb(0xEF, 0xEF, 0xF2));
-                    Mes.Classes.Brush.BackBrush._MyBrush = new SolidColorBrush(Color.FromRgb(48, 48, 48)); 
+                    new MainBrush()._Brush = new SolidColorBrush(Color.FromRgb(0xEF, 0xEF, 0xF2));
+                    new Mes.Classes.Brush.BackBrush()._MyBrush = new SolidColorBrush(Color.FromRgb(48, 48, 48)); 
                     break;
                 case 0:
-                    MainBrush._Brush  = new SolidColorBrush(Color.FromRgb(48, 48, 48));
-                    Mes.Classes.Brush.BackBrush._MyBrush = new SolidColorBrush(Color.FromRgb(0xEF, 0xEF, 0xF2));
+                    new MainBrush()._Brush  = new SolidColorBrush(Color.FromRgb(48, 48, 48));
+                    new Mes.Classes.Brush.BackBrush()._MyBrush = new SolidColorBrush(Color.FromRgb(0xEF, 0xEF, 0xF2));
                     break;
             }
 
@@ -129,8 +129,8 @@ namespace Mes.WindowList
         {
             //Светлая тема
                 ComboBox1 = 1;
-            MainBrush._Brush = new SolidColorBrush(Color.FromRgb(0xEF, 0xEF, 0xF2));
-            Mes.Classes.Brush.BackBrush._MyBrush = new SolidColorBrush(Color.FromRgb(48, 48, 48)); 
+            new MainBrush()._Brush = new SolidColorBrush(Color.FromRgb(0xEF, 0xEF, 0xF2));
+            new Mes.Classes.Brush.BackBrush()._MyBrush = new SolidColorBrush(Color.FromRgb(48, 48, 48)); 
             try
             {
                 File.Delete("SaveInfo/SaveD.save");

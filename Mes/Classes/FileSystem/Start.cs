@@ -17,16 +17,26 @@ namespace Mes.Classes.FileSystem
     {
         public static string[] Load(string path)
         {
+            string[] result = new string[0];
+            string file;
+
             try
             {
                 if(path == null)return null;
 
                 //Считываем файл и сохраняем результаты
-                string file = new StreamReader(path, Encoding.Unicode).ReadLine();
+                    file = File.ReadAllText(path);
+                
+                    //Записивыем в строку символы пока не найдём | после чего переходем на следующею строку       
+                    Task t = Task.Run(() =>
+                    {
+                        if (file != null && file.Length > 0)
+                            result = file.Substring(0, file.Length - 1).Split('|');
+                    });
 
-                //Записивыем в строку символы пока не найдём | после чего переходем на следующею строку       
-                return file!=null ? file.Substring(0,file.Length-1).Split('|') : null;
-            
+                t.Wait();
+
+                    return file != null ? result : new string[0];
             }
             catch (IOException e)
             {

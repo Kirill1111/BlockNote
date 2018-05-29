@@ -21,7 +21,7 @@
             <TextBlock MouseLeftButtonDown="But3_MouseLeftButtonDown" Name ="But3" Text="{DynamicResource Title4}" Width="140" Height="20" />
         </ComboBox>
 
-        <Label Foreground="{Binding _Brush,Source={StaticResource DataSource}}" Name="Label1" FontSize="18" Content="{DynamicResource Title1}" HorizontalAlignment="Left" Margin="50,20,0,0" VerticalAlignment="Top" />
+        <Label Foreground="{Binding _Brush,Source={StaticResource DataSource},UpdateSourceTrigger=PropertyChanged}" Name="Label1" FontSize="18" Content="{DynamicResource Title1}" HorizontalAlignment="Left" Margin="50,20,0,0" VerticalAlignment="Top" />
 
 
         <Menu Height="25" VerticalAlignment="Top" Grid.ColumnSpan="2" FontSize="16" Name="menu1" Margin="0,0,0,0">

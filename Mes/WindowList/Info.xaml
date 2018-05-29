@@ -13,7 +13,7 @@
             <brush:MainBrush x:Key="DataSource" />
             <brush:BackBrush x:Key="GradientSource" />
     </Window.Resources>
-    <Grid Background="{Binding _MyBrush,Source={StaticResource GradientSource}}"  Name="grid">
+    <Grid Background="{Binding _MyBrush,Source={StaticResource GradientSource},UpdateSourceTrigger=PropertyChanged}"  Name="grid">
 
         <Label Foreground="{Binding _Brush,Source={StaticResource DataSource}}"   Content="{DynamicResource Title11}" HorizontalAlignment="Stretch" Margin="0,0,0,465" VerticalAlignment="Stretch" FontSize="18" Name="lb" />
         <Button Click="But_Click" Content="OK" HorizontalAlignment="Right" Margin="0,0,10,29" VerticalAlignment="Bottom"  FontSize="16" Name="But" Width="115"  />

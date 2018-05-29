@@ -55,7 +55,7 @@ namespace Mes.WindowList
             test = null;
             Mes.Classes.Instruments.Save.FileNameOpen();
             GlobalOptions.UpdateState();
-            DataContext = Classes.Brush.BackBrush._MyBrush;
+            DataContext = new Classes.Brush.BackBrush()._MyBrush;
             Classes.Element.FontCombo.Init();
             InitializeComponent();
             LangSelect.Lang(MenuLanguage);
@@ -75,7 +75,6 @@ namespace Mes.WindowList
             Work wrk = new Work();
             Close();
             wrk.Show();
-            DataContext = Mes.Classes.Brush.BackBrush._MyBrush;
             Logs.Log("Menu click work", "Info", System.Reflection.MethodBase.GetCurrentMethod().Name);
         }
 
@@ -84,6 +83,7 @@ namespace Mes.WindowList
             // Открытие окна с информацией
             var inf = new Info(Top, Left, Height, Width, WindowState);
             inf.ShowDialog();
+            Logs.Log("Open Info Dialog", "Info", System.Reflection.MethodBase.GetCurrentMethod().Name);
         }
 
         private void Text1_TextChanged(object sender, TextChangedEventArgs e)
@@ -94,12 +94,14 @@ namespace Mes.WindowList
             {
                 ListL.ItemsSource = result;
             }
+            Logs.Log("Search File", "Info", System.Reflection.MethodBase.GetCurrentMethod().Name);
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             //Сохранение
             Mes.Classes.Instruments.Save.SaveInfo(ListL,TxtBox);
+            Logs.Log("Save file", "Info", System.Reflection.MethodBase.GetCurrentMethod().Name);
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
@@ -118,12 +120,14 @@ namespace Mes.WindowList
                 MessageBox.Show("Неверное имя");
                 Logs.Log("Error input NameFile", "FatalErr", ex, System.Reflection.MethodBase.GetCurrentMethod().Name);
             }
+            Logs.Log("Create new file   ", "Info", System.Reflection.MethodBase.GetCurrentMethod().Name);
         }
 
         private void ButtonBase_OnClick(object sender, RoutedEventArgs e)
         {
             // Начать редактирование файла
             TxtBox.IsReadOnly = false;
+            Logs.Log("Start edit file", "Info", System.Reflection.MethodBase.GetCurrentMethod().Name);
         }
 
         private void TxtBox_OnKeyDown(object sender, KeyEventArgs e)
@@ -133,6 +137,7 @@ namespace Mes.WindowList
             {
                 TxtBox.Document.Blocks.Add(new Paragraph(new Run(Environment.NewLine)));
             }
+            Logs.Log("Go to new line", "Info", System.Reflection.MethodBase.GetCurrentMethod().Name);
         }
 
         private void ButDelete_OnClick(object sender, RoutedEventArgs e)
@@ -154,6 +159,7 @@ namespace Mes.WindowList
                     MessageBox.Show("Выберите файл для удаления");
                     Logs.Log("Error delete File", "FatalErr", ex, System.Reflection.MethodBase.GetCurrentMethod().Name);
                 }
+                Logs.Log("Delete file", "Info", System.Reflection.MethodBase.GetCurrentMethod().Name);
             }
         }
 
@@ -172,6 +178,7 @@ namespace Mes.WindowList
                 MessageBox.Show("Выберите файл для копирования");
                 Logs.Log("Error copy file", "FatalErr", ex, System.Reflection.MethodBase.GetCurrentMethod().Name);
             }
+            Logs.Log("Copy file", "Info", System.Reflection.MethodBase.GetCurrentMethod().Name);
         }
 
 
@@ -180,6 +187,7 @@ namespace Mes.WindowList
             //Открытие файла
             Classes.Dialog.Open.OpenFile(TxtBox);
             ListL.ItemsSource = Classes.FileSystem.Instruments.Output;
+            Logs.Log("Open file", "Info", System.Reflection.MethodBase.GetCurrentMethod().Name);
         }
 
         private void ReName_OnClick(object sender, RoutedEventArgs e)
@@ -194,7 +202,7 @@ namespace Mes.WindowList
                 Instruments.Rename(Classes.Element.List.Selection.SelectionElemtnt, name.Name);
                 ListL.ItemsSource = Classes.FileSystem.Instruments.Output;
             }
-
+            Logs.Log("Chendge filename", "Info", System.Reflection.MethodBase.GetCurrentMethod().Name);
         }
 
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -222,6 +230,7 @@ namespace Mes.WindowList
         {
             //Печать
             Classes.Dialog.Print.PrintText(TxtBox);
+            Logs.Log("Start print file", "Info", System.Reflection.MethodBase.GetCurrentMethod().Name);
         }
 
         private void Save_OnClick(object sender, RoutedEventArgs e)

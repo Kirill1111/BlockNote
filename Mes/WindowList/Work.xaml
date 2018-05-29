@@ -32,16 +32,16 @@
 
 
 
-        <Menu Background="{Binding _MyBrush,Source={StaticResource GradientSource}}"  Height="25" VerticalAlignment="Top" FontSize="16" Name="Menu">
-            <MenuItem Click="MenuItem_Click" ToolTip="{DynamicResource Title23}" Foreground="{Binding _Brush,Source={StaticResource DataSource}}" Header="{DynamicResource Title5}"/>
-            <MenuItem ToolTip="{DynamicResource Title24}" Foreground="{Binding _Brush,Source={StaticResource DataSource}}" Header="{DynamicResource Title6}" Click="MenuItem_Click_1"></MenuItem>
-            <MenuItem ToolTip="{DynamicResource Title25}" Foreground="{Binding _Brush,Source={StaticResource DataSource}}" x:Name="MenuLanguage" Header="{DynamicResource Title16}" />
-            <MenuItem ToolTip="{DynamicResource Title39}" Foreground="{Binding _Brush,Source={StaticResource DataSource}}" x:Name="file" Header="{DynamicResource Title39}" >
+        <Menu Background="{Binding _MyBrush,Source={StaticResource GradientSource},UpdateSourceTrigger=PropertyChanged}"  Height="25" VerticalAlignment="Top" FontSize="16" Name="Menu">
+            <MenuItem Click="MenuItem_Click" ToolTip="{DynamicResource Title23}" Foreground="{Binding _Brush,Source={StaticResource DataSource},UpdateSourceTrigger=PropertyChanged}" Header="{DynamicResource Title5}"/>
+            <MenuItem ToolTip="{DynamicResource Title24}" Foreground="{Binding _Brush,Source={StaticResource DataSource},UpdateSourceTrigger=PropertyChanged}" Header="{DynamicResource Title6}" Click="MenuItem_Click_1"></MenuItem>
+            <MenuItem ToolTip="{DynamicResource Title25}" Foreground="{Binding _Brush,Source={StaticResource DataSource},UpdateSourceTrigger=PropertyChanged}" x:Name="MenuLanguage" Header="{DynamicResource Title16}" />
+            <MenuItem ToolTip="{DynamicResource Title39}" Foreground="{Binding _Brush,Source={StaticResource DataSource},UpdateSourceTrigger=PropertyChanged}" x:Name="file" Header="{DynamicResource Title39}" >
                 <MenuItem Foreground="Black" ToolTip="{DynamicResource Title40}" Click="Open_OnClick"  x:Name="open" Header="{DynamicResource Title40}" />
                 <MenuItem Foreground="Black" ToolTip="{DynamicResource Title47}" Click="Save_OnClick"  x:Name="save" Header="{DynamicResource Title46}" />
             </MenuItem>
-            <MenuItem  Foreground="{Binding _Brush,Source={StaticResource DataSource}}"  Click="MenuItem_OnClick"  Header="{DynamicResource Title48}" />
-            <MenuItem  Foreground="{Binding _Brush,Source={StaticResource DataSource}}" Name="Help" Click="Help_OnClick"  Header="{DynamicResource Title55}" />
+            <MenuItem  Foreground="{Binding _Brush,Source={StaticResource DataSource},UpdateSourceTrigger=PropertyChanged}"  Click="MenuItem_OnClick"  Header="{DynamicResource Title48}" />
+            <MenuItem  Foreground="{Binding _Brush,Source={StaticResource DataSource},UpdateSourceTrigger=PropertyChanged}" Name="Help" Click="Help_OnClick"  Header="{DynamicResource Title55}" />
         </Menu>
 
         <RichTextBox SpellCheck.IsEnabled="True"  VerticalScrollBarVisibility="Auto" Background="#EFEFF2" IsReadOnly="True" AcceptsReturn="True" KeyDown="TxtBox_OnKeyDown" Name="TxtBox"    HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="300,75,0,0">

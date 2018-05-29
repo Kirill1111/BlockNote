@@ -37,6 +37,7 @@ namespace Mes.WindowList
         {
             if(Box.Text!=null)
          NameFile = Box.Text;
+            Classes.Logs.Log("Save selected name", "Info", System.Reflection.MethodBase.GetCurrentMethod().Name);
             this.Close();
         }
 

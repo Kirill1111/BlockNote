@@ -53,6 +53,7 @@ namespace Mes.WindowList
             myImage3.Source = bi3;
 
             Img.Source = myImage3.Source;
+            Classes.Logs.Log("Chandge pages", "Info", System.Reflection.MethodBase.GetCurrentMethod().Name);
         }
 
     }
