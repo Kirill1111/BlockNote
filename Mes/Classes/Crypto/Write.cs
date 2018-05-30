@@ -15,42 +15,41 @@ namespace Mes.Classes.Crypto
     {
         public static void WriteText(string Text,string path, string Key, string IV)
         {
-            try
-            {
-                 UnCode(Text, path, Key, IV);
-            }
-            catch (Exception e)
-            {
-                MessageBox.Show("Ошибка декодирования");
-                Logs.Log("Eror Decode", "FatalErr", e, System.Reflection.MethodBase.GetCurrentMethod().Name);
-            }
+            UnCode(Text, path, Key, IV);
         }
 
         public static async void UnCode(string Text, string path, string Key, string IV)
-        {    
+        {
+            try
+            {
                 //Создание объекта для кодирования
                 var cryptic = new RijndaelManaged
                 {
                     Key = ASCIIEncoding.ASCII.GetBytes(Key),
                     IV = ASCIIEncoding.ASCII.GetBytes(IV)
                 };
-
                 //Получения закодированного текста
                 var data = ASCIIEncoding.Unicode.GetBytes(Text);
-
-            using (var stream = new FileStream(path, FileMode.OpenOrCreate, FileAccess.Write))
-            {
-                using (CryptoStream crStream = new CryptoStream(stream, cryptic.CreateEncryptor(), CryptoStreamMode.Write))
+                using (var stream = new FileStream(path, FileMode.OpenOrCreate, FileAccess.Write))
                 {
-                    Task r = Task.Run(() =>
+                    using (CryptoStream crStream = new CryptoStream(stream, cryptic.CreateEncryptor(), CryptoStreamMode.Write))
                     {
-                    crStream.Write(data, 0, data.Length);
-                    }
-                    );
+                        Task r = Task.Run(() =>
+                        {
+                            crStream.Write(data, 0, data.Length);
+                        }
+                        );
 
-                    r.Wait();
+                        r.Wait();
+                    }
                 }
             }
+            catch (Exception e)
+            {
+                MessageBox.Show("Ошибка декодирования");
+                Logs.Log("Eror Decode", "FatalErr", e, System.Reflection.MethodBase.GetCurrentMethod().Name);
+            }
+            
         }
 
     }

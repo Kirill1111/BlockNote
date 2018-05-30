@@ -30,43 +30,40 @@ namespace Mes.Classes.Crypto
 
         public static void ReadText(string path, string Key, string IV)
         {
-            try
-            {
                 Crypt(path, Key, IV);
-            }
-            catch (Exception e)
-            {
-                System.Windows.Forms.MessageBox.Show("Ошибка шифрования");
-                Logs.Log("Eror Encode","FatalErr",e, System.Reflection.MethodBase.GetCurrentMethod().Name);
-            }
         }
 
         private static async void Crypt(string path, string Key, string IV)
         {
-            string data = "";
-
+            try
+            {
+                string data = "";
                 //Создание объекта для кодирования файла
                 var cryptic = new RijndaelManaged
                 {
                     Key = ASCIIEncoding.ASCII.GetBytes(Key),
                     IV = ASCIIEncoding.ASCII.GetBytes(IV)
                 };
-
-            using (var stream = new FileStream(path, FileMode.Open, FileAccess.Read))
-            {
-                var crStream = new CryptoStream(stream, cryptic.CreateDecryptor(), CryptoStreamMode.Read);
-                using (var reader = new StreamReader(crStream, Encoding.Unicode))
+                using (var stream = new FileStream(path, FileMode.Open, FileAccess.Read))
                 {
-                    Task t = Task.Run(() =>
-                        {
-                     data = reader.ReadToEnd();
-                        }
-                    );
-                    t.Wait();
+                    var crStream = new CryptoStream(stream, cryptic.CreateDecryptor(), CryptoStreamMode.Read);
+                    using (var reader = new StreamReader(crStream, Encoding.Unicode))
+                    {
+                        Task t = Task.Run(() =>
+                            {
+                                data = reader.ReadToEnd();
+                            }
+                        );
+                        t.Wait();
+                    }
                 }
+                File.WriteAllText(path, data.ToString());
             }
-            File.WriteAllText(path, data.ToString());
-
+            catch (Exception e)
+            {
+                System.Windows.Forms.MessageBox.Show("Ошибка шифрования");
+                Logs.Log("Eror Encode", "FatalErr", e, System.Reflection.MethodBase.GetCurrentMethod().Name);
+            }
         }
     }
 }
