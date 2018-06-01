@@ -252,7 +252,7 @@ namespace Mes.WindowList
 
         private void MenuItem_OnClick(object sender, RoutedEventArgs e)
         {
-            var crypt = new Crypto(Classes.Element.List.Selection.SelectionElemtnt,TxtBox);
+            var crypt = new Crypto(Classes.Element.List.Selection.SelectionElemtnt);
             if (crypt.ShowDialog() == false)
             {
                  Classes.Element.ListView.Select(TxtBox, "SaveInfo/SaveText/" + Selection.SelectionElemtnt + ".SAVE");

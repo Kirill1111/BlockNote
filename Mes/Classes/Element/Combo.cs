@@ -26,7 +26,7 @@ namespace Mes.Classes.Element
                 //Заполняем массив
                 for (var i = 1; i < TextCombo.Length; i++)
                 {
-                    TextCombo[i] =Convert.ToString((8 + 3 * i));
+                    TextCombo[i] =Convert.ToString(8 + 3 * i);
                 }
 
                 return true;

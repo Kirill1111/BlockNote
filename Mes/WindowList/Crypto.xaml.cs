@@ -26,7 +26,7 @@ namespace Mes.WindowList
         private readonly string txt;
         private readonly Random rnd = new Random(DateTime.Now.Millisecond);
 
-        public Crypto(string text, RichTextBox inputtext)
+        public Crypto(string text)
         {
             InitializeComponent();
             txt = text;

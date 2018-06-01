@@ -11,11 +11,10 @@ namespace Mes.Unit
         public void TestReadAndWriteInFile()
         {
             string[] Text = new string[2]{"TestX","TestY"};
-            string path = "UnitTest.Save";
-            string[] Result = new string[2];
+            string path = "UnitTest.Save";   
 
             Mes.Classes.FileSystem.Save.SaveInfo(Text,path);
-            Result = Mes.Classes.FileSystem.Start.Load(path);
+            string[] Result = Mes.Classes.FileSystem.Start.Load(path);
 
             Assert.AreEqual(Convert.ToString(Text),Convert.ToString(Result));
         }

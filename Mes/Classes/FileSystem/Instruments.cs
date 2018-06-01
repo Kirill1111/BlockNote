@@ -40,7 +40,7 @@ namespace Mes.Classes.FileSystem
                 int Num = Array.IndexOf(Output, value);
                 if (Num == -1) return;
                 Output[Num] = null;
-                Output.Where(x => x != null).ToArray();
+                Output = Output.Where(x => x != null).ToArray();
             }
         }
         ////////////////////////////////////////////////////////
