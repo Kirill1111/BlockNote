@@ -40,8 +40,6 @@ namespace Mes.WindowList
 
     public partial class Work : Window
     {
-        private Stream File1;
-
         //Сохраняем информациюя
         ~Work()
         {
@@ -255,7 +253,6 @@ namespace Mes.WindowList
             var crypt = new Crypto(Classes.Element.List.Selection.SelectionElemtnt);
             if (crypt.ShowDialog() == false)
             {
-                 Classes.Element.ListView.Select(TxtBox, "SaveInfo/SaveText/" + Selection.SelectionElemtnt + ".SAVE");
                 ListL_OnSelectionChanged(null, null);
             }
         }

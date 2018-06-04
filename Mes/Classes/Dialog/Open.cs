@@ -53,16 +53,15 @@ namespace Mes.Classes.Dialog
                 if (dlg.ShowDialog() == false) return;
                 //Создаём поток для чтения из файла
                 MemoryStream Stream = new MemoryStream(Encoding.ASCII.GetBytes(File.ReadAllText(dlg.FileName)));
+    TextRange range = new TextRange(TxtBox.Document.ContentStart, TxtBox.Document.ContentEnd);
 
                 try
-                {
-                    TextRange range = new TextRange(TxtBox.Document.ContentStart, TxtBox.Document.ContentEnd);
+                {              
                     range.Load(Stream, System.Windows.DataFormats.Rtf);
                     //Заполняем RichTextBox информацией из файла формата Rtf
                 }
-                catch (Exception e)
+                catch (Exception)
                 {
-                    TextRange range = new TextRange(TxtBox.Document.ContentStart, TxtBox.Document.ContentEnd);
                     range.Load(Stream, System.Windows.DataFormats.Text);
                     //Заполняем RichTextBox информацией из файла текстового формата
                 }
