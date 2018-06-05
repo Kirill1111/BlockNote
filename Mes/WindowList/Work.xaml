@@ -27,7 +27,17 @@
             <brush:MainBrush x:Key="DataSource" />
         </Grid.Resources>
 
-        <ListView Background="{Binding _MyBrush,Source={StaticResource GradientSource}}"   SelectedItem="{Binding SelectionElemtnt,Source={StaticResource Select}}" SelectionChanged="ListL_OnSelectionChanged"  FontSize="15" Foreground="{Binding _Brush,Source={StaticResource DataSource}}" Name ="ListL"  VerticalAlignment="Stretch" HorizontalAlignment="Left"   Margin="0,50,0,0" Width="300"/>
+        <ListView Background="{Binding _MyBrush,Source={StaticResource GradientSource}}"   SelectedItem="{Binding SelectionElemtnt,Source={StaticResource Select}}" SelectionChanged="ListL_OnSelectionChanged"  FontSize="15" Foreground="{Binding _Brush,Source={StaticResource DataSource}}" Name ="ListL"  VerticalAlignment="Stretch" HorizontalAlignment="Left"   Margin="0,50,0,0" Width="300">
+            <ListView.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Header="{DynamicResource Title35}" Click="ButDelete_OnClick"/>
+                    <MenuItem Header="{DynamicResource Title41}" Click="ReName_OnClick"/>
+                    <MenuItem Header="{DynamicResource Title37}" Click="Copy_OnClick"/>
+                    <MenuItem Header="{DynamicResource Title42}" Click="Button_Click_3"/>
+                </ContextMenu>
+            </ListView.ContextMenu>
+        </ListView>
+
         <TextBox TextChanged="Text1_TextChanged" FontSize="16" Name="Text1" Height="25" Width="225" Margin="0,25,0,0" HorizontalAlignment="Left" VerticalAlignment="Top"/>
 
 
@@ -44,7 +54,7 @@
             <MenuItem  Foreground="{Binding _Brush,Source={StaticResource DataSource},UpdateSourceTrigger=PropertyChanged}" Name="Help" Click="Help_OnClick"  Header="{DynamicResource Title55}" />
         </Menu>
 
-        <RichTextBox SpellCheck.IsEnabled="True"  VerticalScrollBarVisibility="Auto" Background="#EFEFF2" IsReadOnly="True" AcceptsReturn="True" KeyDown="TxtBox_OnKeyDown" Name="TxtBox"    HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="300,75,0,0">
+        <RichTextBox SpellCheck.IsEnabled="True"  VerticalScrollBarVisibility="Auto" Background="#EFEFF2" IsReadOnly="True" AcceptsReturn="True" KeyDown="TxtBox_OnKeyDown" Name="TxtBox"    HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="300,50,0,0">
 
             <FlowDocument LineHeight="1">
                 <Paragraph>
@@ -57,22 +67,17 @@
         </RichTextBox>
 
         <Button FontSize="11" MouseEnter="Button_MouseEnter" MouseLeave="Button_MouseLeave" Click="Button_Click_1" ToolTip="{DynamicResource Title31}" HorizontalAlignment="Left" Margin="225,25,0,0" VerticalAlignment="Top" Height="25"  Content="{DynamicResource Title14}" Width="75" />
-        <Button FontSize="11"  MouseEnter="Button_MouseEnter" MouseLeave="Button_MouseLeave" ToolTip="{DynamicResource Title30}"  Content="{DynamicResource Title15}" HorizontalAlignment="Left"  Margin="498,25,0,0" VerticalAlignment="Top" Width="100" Height="25" Click="Button_Click" />
-        <Button  FontSize="11" MouseEnter="Button_MouseEnter" MouseLeave="Button_MouseLeave"   ToolTip="{DynamicResource Title34}"  Content="{DynamicResource Title33}" HorizontalAlignment="Left"  Margin="400,25,0,0" VerticalAlignment="Top" Width="100" Height="25" Click="ButtonBase_OnClick" />
-        <Button FontSize="11"  MouseEnter="Button_MouseEnter" MouseLeave="Button_MouseLeave"  ToolTip="{DynamicResource Title36}"  Content="{DynamicResource Title35}" HorizontalAlignment="Left"  Margin="300,25,0,0" VerticalAlignment="Top" Width="100" Height="25" Click="ButDelete_OnClick"  Name="ButDelete" />
-        <Button FontSize="11" MouseEnter="Button_MouseEnter" MouseLeave="Button_MouseLeave"  ToolTip="{DynamicResource Title38}"  Content="{DynamicResource Title37}" HorizontalAlignment="Left"  Margin="598,25,0,0" VerticalAlignment="Top" Width="100" Height="25" Click="Copy_OnClick"  Name="Copy"/>
-        <Button FontSize="11" MouseEnter="Button_MouseEnter" MouseLeave="Button_MouseLeave"  ToolTip="{DynamicResource Title41}"  Content="{DynamicResource Title41}" HorizontalAlignment="Left"  Margin="698,25,0,0" VerticalAlignment="Top" Width="100" Height="25" Click="ReName_OnClick"  Name="ReName"/>
-        <ComboBox ItemsSource="{Binding TextCombo,Source=element}" Name="ComboB" SelectionChanged="ComboBox_SelectionChanged" HorizontalAlignment="Left" Margin="300,50,0,0" VerticalAlignment="Top" Width="75" Height="25"/>
-        <Button FontSize="11" MouseEnter="Button_MouseEnter" MouseLeave="Button_MouseLeave"  ToolTip="{DynamicResource Title45}" Content="{DynamicResource Title44}" HorizontalAlignment="Left" Margin="375,50,0,0" VerticalAlignment="Top" Width="75" Height="25" Click="Button_Click_2"/>
-        <Button FontSize="11" MouseEnter="Button_MouseEnter" MouseLeave="Button_MouseLeave"  ToolTip="{DynamicResource Title43}" Content="{DynamicResource Title42}" HorizontalAlignment="Left" Margin="798,25,0,0" VerticalAlignment="Top"  Height="25" Click="Button_Click_3" Width="100" />
-        <ComboBox SelectionChanged="Selector_OnSelectionChanged" ItemsSource="{Binding Font,Source={StaticResource ElementCombo}}" HorizontalAlignment="Left" Margin="450,50,0,0" VerticalAlignment="Top" Width="148" Height="25"/>
-        <Button HorizontalAlignment="Left" Margin="598,50,0,0" VerticalAlignment="Top" Width="50" Height="25" Click="Button_Click_4">
+        <Button FontSize="11"  MouseEnter="Button_MouseEnter" MouseLeave="Button_MouseLeave" ToolTip="{DynamicResource Title30}"  Content="{DynamicResource Title15}" HorizontalAlignment="Left"  Margin="748,25,0,0" VerticalAlignment="Top" Width="100" Height="25" Click="Button_Click" />
+        <ComboBox ItemsSource="{Binding TextCombo,Source=element}" Name="ComboB" SelectionChanged="ComboBox_SelectionChanged" HorizontalAlignment="Left" Margin="300,25,0,0" VerticalAlignment="Top" Width="75" Height="25"/>
+        <Button FontSize="11" MouseEnter="Button_MouseEnter" MouseLeave="Button_MouseLeave"  ToolTip="{DynamicResource Title45}" Content="{DynamicResource Title44}" HorizontalAlignment="Left" Margin="375,25,0,0" VerticalAlignment="Top" Width="75" Height="25" Click="Button_Click_2"/>
+        <ComboBox SelectionChanged="Selector_OnSelectionChanged" ItemsSource="{Binding Font,Source={StaticResource ElementCombo}}" HorizontalAlignment="Left" Margin="450,25,0,0" VerticalAlignment="Top" Width="148" Height="25"/>
+        <Button HorizontalAlignment="Left" Margin="598,25,0,0" VerticalAlignment="Top" Width="50" Height="25" Click="Button_Click_4">
             <Image Stretch="Fill" Source="../Resources/Image/TextPosition/Left.png" />
         </Button>
-        <Button HorizontalAlignment="Left" Margin="648,50,0,0" VerticalAlignment="Top" Width="50" Height="25" Click="Button_Click_5">
+        <Button HorizontalAlignment="Left" Margin="648,25,0,0" VerticalAlignment="Top" Width="50" Height="25" Click="Button_Click_5">
             <Image Stretch="Fill" Source="../Resources/Image/TextPosition/Centr.png"/>
         </Button>
-        <Button  HorizontalAlignment="Left" Margin="698,50,0,0" VerticalAlignment="Top" Width="50" Height="25" Click="Button_Click_6">
+        <Button  HorizontalAlignment="Left" Margin="698,25,0,0" VerticalAlignment="Top" Width="50" Height="25" Click="Button_Click_6">
             <Image Stretch="Fill" Source="../Resources/Image/TextPosition/Right.png"/>
         </Button>
 

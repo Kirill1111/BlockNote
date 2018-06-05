@@ -112,8 +112,6 @@ namespace Mes.Classes.Instruments
 
                 //Обновляем информацию о списке файлов
                 ListL.ItemsSource = Classes.FileSystem.Instruments.Output;
-                // Запрещаем редактировать RichTextBox
-                TxtBox.IsReadOnly = true;
                 //Закрываем поток чтения файла
                 fileStream.Close();
             }

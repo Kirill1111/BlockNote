@@ -18,7 +18,6 @@ namespace Mes.Classes.Element
             RichTextBox TxtBox = sender as RichTextBox;
 
             TxtBox.Document.Blocks.Clear();
-            TxtBox.IsReadOnly = true;
 
             if (File.Exists(path)) File1 = new FileStream(path, FileMode.Open);
             else return;

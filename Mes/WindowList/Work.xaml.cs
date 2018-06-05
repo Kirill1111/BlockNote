@@ -49,7 +49,7 @@ namespace Mes.WindowList
 
         public Work()
         {
-            reestablish test = new reestablish();
+            reestablish test = new reestablish() ;
             test = null;
             Mes.Classes.Instruments.Save.FileNameOpen();
             GlobalOptions.UpdateState();
@@ -121,12 +121,6 @@ namespace Mes.WindowList
             Logs.Log("Create new file   ", "Info", System.Reflection.MethodBase.GetCurrentMethod().Name);
         }
 
-        private void ButtonBase_OnClick(object sender, RoutedEventArgs e)
-        {
-            // Начать редактирование файла
-            TxtBox.IsReadOnly = false;
-            Logs.Log("Start edit file", "Info", System.Reflection.MethodBase.GetCurrentMethod().Name);
-        }
 
         private void TxtBox_OnKeyDown(object sender, KeyEventArgs e)
         {
@@ -193,7 +187,7 @@ namespace Mes.WindowList
             //Изменение имени
             var name = new ReName();
             name.ShowDialog();
-            if (Classes.FileSystem.Instruments.Search(Classes.Element.List.Selection.SelectionElemtnt))
+            if (Classes.FileSystem.Instruments.Search(Classes.Element.List.Selection.SelectionElemtnt) && name.Name !=null )
             {
                 Move("SaveInfo/SaveText/" + Classes.Element.List.Selection.SelectionElemtnt + ".SAVE", "SaveInfo/SaveText/" + name.Name + ".SAVE");
                 Classes.Instruments.Save.FileNameAdd(name.Name);
@@ -276,7 +270,8 @@ namespace Mes.WindowList
         }
 
         private void ListL_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
+        { 
+            TxtBox.IsReadOnly = false;
             Mes.Classes.Element.ListView.Select(TxtBox,
                 "SaveInfo/SaveText/" + Classes.Element.List.Selection.SelectionElemtnt + ".SAVE");
         }
