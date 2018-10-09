@@ -21,8 +21,8 @@
         <Grid.Resources>
             <Select:Selection x:Key="Select"/>
             <Element:Combo x:Key="element"/>
-            <Element:FontCombo x:Key="ElementCombo"/>
-            <brush:BackBrush x:Key="GradientSource"/>
+                <Element:FontCombo x:Key="ElementCombo"/>
+                <brush:BackBrush x:Key="GradientSource"/>
             <instr:Instruments x:Key="WorkSource" />
             <brush:MainBrush x:Key="DataSource" />
         </Grid.Resources>

@@ -44,15 +44,15 @@ namespace Mes.WindowList
 
         private void EditPages()
         {
-            Image myImage3 = new Image();
-            BitmapImage bi3 = new BitmapImage();
-            bi3.BeginInit();
-            bi3.UriSource = new Uri("../Resources/Image/Image"+pages+ ".png", UriKind.Relative);
-            bi3.EndInit();
-            myImage3.Stretch = Stretch.Fill;
-            myImage3.Source = bi3;
+                Image myImage3 = new Image();
+                BitmapImage bi3 = new BitmapImage();
+                bi3.BeginInit();
+                bi3.UriSource = new Uri("../Resources/Image/Image"+pages+ ".png", UriKind.Relative);
+                bi3.EndInit();
+                myImage3.Stretch = Stretch.Fill;
+                myImage3.Source = bi3;
 
-            Img.Source = myImage3.Source;
+                Img.Source = myImage3.Source;
             Classes.Logs.Log("Chandge pages", "Info", System.Reflection.MethodBase.GetCurrentMethod().Name);
         }
 

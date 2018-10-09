@@ -30,12 +30,13 @@ namespace Mes.Classes.Element
             }
             catch (Exception)
             {
+                File1.Close();
                 // Чтение файла другово формата                
-                File1.Read(Encoding.Default.GetBytes(range.Text), 0, range.Text.Length);
+                range.Text = File.ReadAllText(path, Encoding.Unicode);
             }
             finally
             {
-                File1.Close();
+                File1?.Close();
             }
         }
     }
