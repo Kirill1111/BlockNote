@@ -49,12 +49,7 @@ namespace Mes.Classes.Crypto
                     var crStream = new CryptoStream(stream, cryptic.CreateDecryptor(), CryptoStreamMode.Read);
                     using (var reader = new StreamReader(crStream, Encoding.Unicode))
                     {
-                        Task t = Task.Run(() =>
-                            {
                                 data = reader.ReadToEnd();
-                            }
-                        );
-                        t.Wait();
                     }
                 }
                 File.WriteAllText(path, data.ToString());

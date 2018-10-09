@@ -34,13 +34,9 @@ namespace Mes.Classes.Crypto
                 {
                     using (CryptoStream crStream = new CryptoStream(stream, cryptic.CreateEncryptor(), CryptoStreamMode.Write))
                     {
-                        Task r = Task.Run(() =>
-                        {
+      
                             crStream.Write(data, 0, data.Length);
-                        }
-                        );
 
-                        r.Wait();
                     }
                 }
             }

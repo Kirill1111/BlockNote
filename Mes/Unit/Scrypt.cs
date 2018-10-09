@@ -15,7 +15,7 @@ namespace Mes.Unit
 
             Mes.Classes.Crypto.Write.WriteText("Test", "Test.SAVE", "Key1Key1Key1Key1Key1Key1Key1Key1", "Key1Key1Key1Key1");
             Mes.Classes.Crypto.Read.ReadText("Test.SAVE", "Key1Key1Key1Key1Key1Key1Key1Key1", "Key1Key1Key1Key1");
-            result = File.ReadAllText("SaveInfo/SaveText/Test.SAVE");
+            result = File.ReadAllText("Test.SAVE");
 
             File.Delete("Test.SAVE");
 

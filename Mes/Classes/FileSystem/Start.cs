@@ -28,13 +28,8 @@ namespace Mes.Classes.FileSystem
                     file = File.ReadAllText(path);
                 
                     //Записивыем в строку символы пока не найдём | после чего переходем на следующею строку       
-                    Task t = Task.Run(() =>
-                    {
                         if (file != null && file.Length > 0)
                             result = file.Substring(0, file.Length - 1).Split('|');
-                    });
-
-                t.Wait();
 
                     return file != null ? result : new string[0];
             }

@@ -21,13 +21,9 @@ namespace Mes.Classes.FileSystem
 
             //Создаём массив и сохраняем в нём список файлов 
             //и Выполняем поиск
-            Task t = Task.Run(() =>
-            {
+
                 var text = Classes.FileSystem.Instruments.Output;
                 result = text.Where(x => x.Substring(0, x.Length < StrTxt.Length ? x.Length : StrTxt.Length) == StrTxt).ToArray();
-            });
-
-            t.Wait();
 
             return result;
         }
