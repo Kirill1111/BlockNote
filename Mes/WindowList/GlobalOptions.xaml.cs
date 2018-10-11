@@ -142,8 +142,11 @@ namespace Mes.WindowList
             }
         }
 
-
-
+        private void check_Checked(object sender, RoutedEventArgs e)
+        {
+            CheckBox check = sender as CheckBox;
+            Options.GrammarChecker = (bool)check.IsChecked;
+        }
     }
 }
 
