@@ -26,13 +26,19 @@ namespace Mes.Classes.Element
             try
             {
                 // Чтение файла формата Rtf
-                range.Load(File1, System.Windows.DataFormats.Rtf);
+                range.Load(File1, System.Windows.DataFormats.Text);
             }
             catch (Exception)
             {
                 File1.Close();
-                // Чтение файла другово формата                
-                range.Text = File.ReadAllText(path, Encoding.Unicode);
+                FileStream fileStream = new FileStream(path, FileMode.Create);
+                range = new TextRange(TxtBox.Document.ContentStart, TxtBox.Document.ContentEnd);
+                range.Save(fileStream, System.Windows.DataFormats.Rtf);
+
+                //Закрываем поток чтения файла
+                fileStream.Close();
+
+                range.Load(File1, System.Windows.DataFormats.Rtf);
             }
             finally
             {
