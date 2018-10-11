@@ -98,7 +98,7 @@ namespace Mes.WindowList
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             //Сохранение
-            Mes.Classes.Instruments.Save.SaveInfo(ListL,TxtBox);
+            Mes.Classes.Instruments.Save.SaveRTF(ListL,TxtBox);
             Logs.Log("Save file", "Info", System.Reflection.MethodBase.GetCurrentMethod().Name);
         }
 

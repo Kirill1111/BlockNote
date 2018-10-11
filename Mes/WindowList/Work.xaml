@@ -19,6 +19,7 @@
 
     <Grid  Name="Grid"  >
         <Grid.Resources>
+            <classes:Options x:Key="Options"></classes:Options>
             <Select:Selection x:Key="Select"/>
             <Element:Combo x:Key="element"/>
                 <Element:FontCombo x:Key="ElementCombo"/>
@@ -54,7 +55,8 @@
             <MenuItem  Foreground="{Binding _Brush,Source={StaticResource DataSource},UpdateSourceTrigger=PropertyChanged}" Name="Help" Click="Help_OnClick"  Header="{DynamicResource Title55}" />
         </Menu>
 
-        <RichTextBox SpellCheck.IsEnabled="True"  VerticalScrollBarVisibility="Auto" Background="#EFEFF2" IsReadOnly="True" AcceptsReturn="True" KeyDown="TxtBox_OnKeyDown" Name="TxtBox"    HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="300,50,0,0">
+
+        <RichTextBox SpellCheck.IsEnabled="{Binding GrammarChecker,Source={StaticResource Options},UpdateSourceTrigger=PropertyChanged}"  VerticalScrollBarVisibility="Auto" Background="#EFEFF2" IsReadOnly="True" AcceptsReturn="True" KeyDown="TxtBox_OnKeyDown" Name="TxtBox"    HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="300,50,0,0">
 
             <FlowDocument LineHeight="1">
                 <Paragraph>
