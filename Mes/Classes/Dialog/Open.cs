@@ -52,24 +52,8 @@ namespace Mes.Classes.Dialog
                 //Проверяем закрыт ли диалог
                 if (dlg.ShowDialog() == false) return;
                 //Создаём поток для чтения из файла
-                MemoryStream Stream = new MemoryStream(Encoding.ASCII.GetBytes(File.ReadAllText(dlg.FileName)));
-    TextRange range = new TextRange(TxtBox.Document.ContentStart, TxtBox.Document.ContentEnd);
 
-                try
-                {              
-                    range.Load(Stream, System.Windows.DataFormats.Rtf);
-                    //Заполняем RichTextBox информацией из файла формата Rtf
-                }
-                catch (Exception)
-                {
-                    range.Load(Stream, System.Windows.DataFormats.Text);
-                    //Заполняем RichTextBox информацией из файла текстового формата
-                }
-                finally
-                {
-                    Stream.Close();
-                    //Закрываем поток
-                }
+                Element.ListView.Select(TxtBox,dlg.FileName);
 
                 Classes.FileSystem.Instruments.Add = Path.GetFileNameWithoutExtension(dlg.FileName);
                 //Добавляем имя открытого файла в список
