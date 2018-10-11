@@ -69,7 +69,7 @@ namespace Mes.Classes.Instruments
         }
 
         //Сохранение информации
-        public static void SaveInfo(ListView ListL , RichTextBox TxtBox)
+        public static void SaveRTF(ListView ListL , RichTextBox TxtBox)
         {
             if (Search(Element.List.Selection.SelectionElemtnt))
                 SaveSystem(TxtBox);
