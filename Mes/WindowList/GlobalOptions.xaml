@@ -10,8 +10,9 @@
         mc:Ignorable="d"
         Style="{StaticResource ResourceKey=VS2012WindowStyle}"
         Title="GlobalOptions"  MinWidth="800" MinHeight="600" HorizontalAlignment="Center" VerticalAlignment="Center" WindowStyle="None" Foreground="White" BorderBrush="White">
-<Window.Resources>
-            <brush:MainBrush x:Key="DataSource" />
+    <Window.Resources>
+        <classes:Options x:Key="Options"></classes:Options>
+        <brush:MainBrush x:Key="DataSource" />
         <brush:BackBrush x:Key="GradientSource" />
     </Window.Resources>
     <Grid Background="{Binding _MyBrush,Source={StaticResource GradientSource}}"  Height="Auto" Width="Auto" Name="grid">
@@ -22,6 +23,10 @@
         </ComboBox>
 
         <Label Foreground="{Binding _Brush,Source={StaticResource DataSource},UpdateSourceTrigger=PropertyChanged}" Name="Label1" FontSize="18" Content="{DynamicResource Title1}" HorizontalAlignment="Left" Margin="50,20,0,0" VerticalAlignment="Top" />
+
+        <Label Foreground="{Binding _Brush,Source={StaticResource DataSource},UpdateSourceTrigger=PropertyChanged}" Name="Label2" FontSize="18" Content="{DynamicResource Title57}" HorizontalAlignment="Left" Margin="50,54,0,0" VerticalAlignment="Top" />
+
+        <CheckBox Checked="check_Checked" IsChecked="{Binding GrammarChecker,Source={StaticResource Options},UpdateSourceTrigger=PropertyChanged}" FontSize="16" Name="check" HorizontalAlignment="Center" Margin="559,64,158,0" VerticalAlignment="Top" Width="35" Height="24" />
 
 
         <Menu Height="25" VerticalAlignment="Top" Grid.ColumnSpan="2" FontSize="16" Name="menu1" Margin="0,0,0,0">
