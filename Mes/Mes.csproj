@@ -177,6 +177,7 @@
     <Compile Include="Classes\Instruments\Save.cs" />
     <Compile Include="Classes\LangSelect.cs" />
     <Compile Include="Classes\Logs.cs" />
+    <Compile Include="Classes\Options.cs" />
     <Compile Include="Classes\reestablish.cs" />
     <Compile Include="Resources\CustomizedWindow\VS2012WindowStyle.cs" />
     <Compile Include="Unit\SaveAndRead.cs" />
